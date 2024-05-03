@@ -1,5 +1,40 @@
 # Profiling
 
+## بخش اول
+
+ابتدا YourKit را دانلود و با اینتلیجی integrate میکنیم. حال در پروژه وقتی روی کلاس JavaCup راست کلیک کنیم گزینه Profiling ظاهر میشود:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/412ebbb5-740c-45d7-b0ef-3dfa72b16200)
+
+حال با اجرای این کد و وارد کردن اعداد ورودی، به Yourkit هدایت میشویم:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/5405269a-d623-4779-aca3-acc90ee38053)
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/cdc2af0e-0759-4983-b466-e1ec13f201d7)
+
+به ما اطلاع داده میشود که یک Snapshot به طور خودکار ضبط شده است. میتوان روی آن زد تا نمایان شود اما ما نیازی نداریم. در تصویر زیر مشخص است متد temp زمان زیادی میبرد:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/7a40dc1e-96c3-4b49-8b6b-8f79adbb0120)
+
+این متد را بررسی میکنیم:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/e96e0ab5-d7f7-4791-9567-0a6e41c38e18)
+
+مشخصا این متد اعدادی به فرم a + b که a از 0 تا 9999 و b از 0 تا 19999 هستند را در یک array list میریزد اما از آن اصلا استفاده ای نمیکند و کاملا بیهوده است. پس میتوان این متد را فقط با یک ریترن جایزگین کرد:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/e95bf8de-083a-4a7f-9fae-06bdf9683a04)
+
+حال دوباره با اجرای profiling برنامه را ران میکنیم:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/25917714-c42f-4c65-a2a2-265a1b66ffa1)
+
+این بار برنامه با موفقیت اجرا میشود. در پنجره yourkit هم داریم:
+
+![image](https://github.com/seftaz/Experiment-Profiling/assets/79263953/c2bd76ec-9457-408e-9b7f-3ce2b07868f7)
+
+مشخصا چون برنامه فورا اجرا میشود دیگر متدی نداریم که تایم ببرد و بهینه سازی انجام شده است.
+
+
 ## Second Section
 we solve the coin change problem in two ways firstly using recursive and secondly using DP for better timing and using of resources.
 in recursive way:
